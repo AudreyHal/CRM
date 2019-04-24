@@ -1,9 +1,9 @@
 <div class="content">
   <div class="columns">
-    <div class="column">
+    <div class="column col-11">
       <span class="float-right"><%= link "Create Opportunity", to: Routes.opportunity_path(@conn, :new), class: "btn btn-primary" %></span>
     </div>
-    <div class="column col-12 col-mx-auto">
+    <div class="column col-11 col-mx-auto">
       <table class="table table-striped table-hover">
         <thead>
           <tr>
