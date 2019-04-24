@@ -1,72 +1,80 @@
-<div class="columns new_cl">
-   <div class="column col-12">
-</div>
-  <div class="column col-12">
+<div class="columns new_cl2">
+   <div class="column col-2 small_div">
+ <span id = "field_title" ><b> <%= @account.name %></b></span>
+   <ul class="show_list_ul">
 
-</div> </div> 
-<ul>
-
-  <li>
-    <strong>Name:</strong>
+<button class="contact_section" id="acc"> Account Details</button>
+<div id ="hidden1">
+  <li class="show_list">
+    <div class="show_label">Name:</div >
     <%= @account.name %>
   </li>
 
-  <li>
-    <strong>Phone:</strong>
+
+  <li class="show_list">
+    <div class="show_label">Phone:</div >
     <%= @account.phone %>
   </li>
 
-  <li>
-    <strong>Email:</strong>
+  <li class="show_list">
+    <div class="show_label">Email:</div >
     <%= @account.email %>
   </li>
 
-  <li>
-    <strong>Assignee:</strong>
+  <li class="show_list">
+    <div class="show_label">Assignee:</div >
     <%= @account.assignee %>
   </li>
 
-  <li>
-    <strong>Category:</strong>
+  <li class="show_list">
+    <div class="show_label">Category:</div >
     <%= @account.category %>
   </li>
 
-  <li>
-    <strong>Rating:</strong>
+  <li class="show_list">
+    <div class="show_label">Rating:</div >
     <%= @account.rating %>
   </li>
 
-  <li>
-    <strong>Tags:</strong>
+  <li class="show_list">
+    <div class="show_label">Tags:</div >
     <%= @account.tags %>
+</li>
+     <li class="show_list">
+    <div class="show_label">Website:</div >
+    <%= @account.website %>
   </li>
+  </div>
+   
 
-  <li>
-    <strong>Address:</strong>
+  <button class="contact_section" id="acc2"> Contact Information</button>
+  <div id ="hidden2">
+  <li class="show_list">
+    <div class="show_label">Address:</div >
     <%= @account.address %>
   </li>
 
-  <li>
-    <strong>City:</strong>
+  <li class="show_list">
+    <div class="show_label">City:</div >
     <%= @account.city %>
   </li>
 
-  <li>
-    <strong>Country:</strong>
+  <li class="show_list">
+    <div class="show_label">Country:</div >
     <%= @account.country %>
   </li>
 
-  <li>
-    <strong>Zipcode:</strong>
+  <li class="show_list">
+    <div class="show_label">Zipcode:</div >
     <%= @account.zipcode %>
   </li>
+</div>
 
-  <li>
-    <strong>Website:</strong>
-    <%= @account.website %>
-  </li>
 
 </ul>
+</div>
+  <div class="column col-10">
 
-<span><%= link "Edit", to: Routes.account_path(@conn, :edit, @account) %></span>
-<span><%= link "Back", to: Routes.account_path(@conn, :index) %></span>
+
+
+</div> </div> 
