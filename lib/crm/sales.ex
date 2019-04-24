@@ -21,6 +21,10 @@ defmodule Crm.Sales do
     Repo.all(Account)
   end
 
+  def list_repo_accounts do
+    Repo.all(Account) |> Enum.map(&{&1.name, &1.id})
+  end
+
   @doc """
   Gets a single account.
 
@@ -100,5 +104,102 @@ defmodule Crm.Sales do
   """
   def change_account(%Account{} = account) do
     Account.changeset(account, %{})
+  end
+
+  alias Crm.Sales.Opportunity
+
+  @doc """
+  Returns the list of opportunities.
+
+  ## Examples
+
+      iex> list_opportunities()
+      [%Opportunity{}, ...]
+
+  """
+  def list_opportunities do
+    Repo.all(Opportunity)
+  end
+
+  @doc """
+  Gets a single opportunity.
+
+  Raises `Ecto.NoResultsError` if the Opportunity does not exist.
+
+  ## Examples
+
+      iex> get_opportunity!(123)
+      %Opportunity{}
+
+      iex> get_opportunity!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_opportunity!(id), do: Repo.get!(Opportunity, id)
+
+  @doc """
+  Creates a opportunity.
+
+  ## Examples
+
+      iex> create_opportunity(%{field: value})
+      {:ok, %Opportunity{}}
+
+      iex> create_opportunity(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_opportunity(%Account{} = account, attrs \\ %{}) do
+    account
+    |> Ecto.build_assoc(:opportunities)
+    |> Opportunity.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a opportunity.
+
+  ## Examples
+
+      iex> update_opportunity(opportunity, %{field: new_value})
+      {:ok, %Opportunity{}}
+
+      iex> update_opportunity(opportunity, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_opportunity(%Opportunity{} = opportunity, attrs) do
+    opportunity
+    |> Opportunity.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a Opportunity.
+
+  ## Examples
+
+      iex> delete_opportunity(opportunity)
+      {:ok, %Opportunity{}}
+
+      iex> delete_opportunity(opportunity)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_opportunity(%Opportunity{} = opportunity) do
+    Repo.delete(opportunity)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking opportunity changes.
+
+  ## Examples
+
+      iex> change_opportunity(opportunity)
+      %Ecto.Changeset{source: %Opportunity{}}
+
+  """
+  def change_opportunity(%Opportunity{} = opportunity) do
+    Opportunity.changeset(opportunity, %{})
   end
 end
