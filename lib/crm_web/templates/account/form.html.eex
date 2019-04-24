@@ -1,7 +1,7 @@
   <div class="columns main_form">
   
-  <div class="column col-4"> </div>
-  <div class="acc_form column col-4 ">
+  <div class="column col-lg-4 col-sm-0 col-md-2"> </div>
+  <div class="acc_form column col-lg-4 col-sm-12 col-md-8">
   <div class="form_title">New Account</div>
 <%= form_for @changeset, @action, fn f -> %>
   <%= if @changeset.action do %>
@@ -107,6 +107,6 @@
     <%= submit "Save", class: "btn acc_btn_save float-right" %>
   </div>
 <% end %> </div>
- <div class="column col-4"> </div>
+ <div class="column col-lg-4 col-sm-0 col-md-2"> </div>
 
  </div>
