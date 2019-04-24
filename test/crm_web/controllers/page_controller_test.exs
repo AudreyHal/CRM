@@ -1,8 +1,9 @@
-defmodule CrmWeb.PageControllerTest do
-  use CrmWeb.ConnCase
 
+<<<<<<< HEAD
   test "GET /", %{conn: conn} do
     conn = get(conn, "/")
-    assert html_response(conn, 200) =~ "Welcome to Phoenix!"
+   
   end
 end
+=======
+>>>>>>> e31388d2d196edc38d74b4e7023d255da54f6247

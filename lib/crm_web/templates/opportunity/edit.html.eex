@@ -1,0 +1,5 @@
+<h1>Edit Opportunity</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.opportunity_path(@conn, :update, @opportunity)) %>
+
+<span><%= link "Back", to: Routes.opportunity_path(@conn, :index) %></span>

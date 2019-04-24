@@ -6,11 +6,17 @@
               {description,"crm"},
               {modules,['Elixir.Crm','Elixir.Crm.Application',
                         'Elixir.Crm.DataCase','Elixir.Crm.Repo',
+<<<<<<< HEAD
+                        'Elixir.CrmWeb','Elixir.CrmWeb.ChannelCase',
+                        'Elixir.CrmWeb.ConnCase','Elixir.CrmWeb.Endpoint',
+                        'Elixir.CrmWeb.ErrorHelpers',
+=======
                         'Elixir.Crm.Sales','Elixir.Crm.Sales.Account',
                         'Elixir.CrmWeb','Elixir.CrmWeb.AccountController',
                         'Elixir.CrmWeb.AccountView',
                         'Elixir.CrmWeb.ChannelCase','Elixir.CrmWeb.ConnCase',
                         'Elixir.CrmWeb.Endpoint','Elixir.CrmWeb.ErrorHelpers',
+>>>>>>> e5c53d4fc33b4194b802565c98a809dc7a3b9a59
                         'Elixir.CrmWeb.ErrorView','Elixir.CrmWeb.Gettext',
                         'Elixir.CrmWeb.LayoutView',
                         'Elixir.CrmWeb.PageController',

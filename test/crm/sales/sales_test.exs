@@ -160,6 +160,75 @@ defmodule Crm.SalesTest do
     test "change_lead/1 returns a lead changeset" do
       lead = lead_fixture()
       assert %Ecto.Changeset{} = Sales.change_lead(lead)
+
+  describe "opportunities" do
+    alias Crm.Sales.Opportunity
+
+    @valid_attrs %{amount: "120.5", assigned_to: "some assigned_to", close_date: ~D[2010-04-17], discount: "some discount", name: "some name", probability: "some probability", stage: "some stage"}
+    @update_attrs %{amount: "456.7", assigned_to: "some updated assigned_to", close_date: ~D[2011-05-18], discount: "some updated discount", name: "some updated name", probability: "some updated probability", stage: "some updated stage"}
+    @invalid_attrs %{amount: nil, assigned_to: nil, close_date: nil, discount: nil, name: nil, probability: nil, stage: nil}
+
+    def opportunity_fixture(attrs \\ %{}) do
+      {:ok, opportunity} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Sales.create_opportunity()
+
+      opportunity
+    end
+
+    test "list_opportunities/0 returns all opportunities" do
+      opportunity = opportunity_fixture()
+      assert Sales.list_opportunities() == [opportunity]
+    end
+
+    test "get_opportunity!/1 returns the opportunity with given id" do
+      opportunity = opportunity_fixture()
+      assert Sales.get_opportunity!(opportunity.id) == opportunity
+    end
+
+    test "create_opportunity/1 with valid data creates a opportunity" do
+      assert {:ok, %Opportunity{} = opportunity} = Sales.create_opportunity(@valid_attrs)
+      assert opportunity.amount == Decimal.new("120.5")
+      assert opportunity.assigned_to == "some assigned_to"
+      assert opportunity.close_date == ~D[2010-04-17]
+      assert opportunity.discount == "some discount"
+      assert opportunity.name == "some name"
+      assert opportunity.probability == "some probability"
+      assert opportunity.stage == "some stage"
+    end
+
+    test "create_opportunity/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Sales.create_opportunity(@invalid_attrs)
+    end
+
+    test "update_opportunity/2 with valid data updates the opportunity" do
+      opportunity = opportunity_fixture()
+      assert {:ok, %Opportunity{} = opportunity} = Sales.update_opportunity(opportunity, @update_attrs)
+      assert opportunity.amount == Decimal.new("456.7")
+      assert opportunity.assigned_to == "some updated assigned_to"
+      assert opportunity.close_date == ~D[2011-05-18]
+      assert opportunity.discount == "some updated discount"
+      assert opportunity.name == "some updated name"
+      assert opportunity.probability == "some updated probability"
+      assert opportunity.stage == "some updated stage"
+    end
+
+    test "update_opportunity/2 with invalid data returns error changeset" do
+      opportunity = opportunity_fixture()
+      assert {:error, %Ecto.Changeset{}} = Sales.update_opportunity(opportunity, @invalid_attrs)
+      assert opportunity == Sales.get_opportunity!(opportunity.id)
+    end
+
+    test "delete_opportunity/1 deletes the opportunity" do
+      opportunity = opportunity_fixture()
+      assert {:ok, %Opportunity{}} = Sales.delete_opportunity(opportunity)
+      assert_raise Ecto.NoResultsError, fn -> Sales.get_opportunity!(opportunity.id) end
+    end
+
+    test "change_opportunity/1 returns a opportunity changeset" do
+      opportunity = opportunity_fixture()
+      assert %Ecto.Changeset{} = Sales.change_opportunity(opportunity)
     end
   end
 end

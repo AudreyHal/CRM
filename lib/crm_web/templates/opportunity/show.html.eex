@@ -1,0 +1,43 @@
+<h1>Show Opportunity</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @opportunity.name %>
+  </li>
+
+  <li>
+    <strong>Amount:</strong>
+    <%= @opportunity.amount %>
+  </li>
+
+  <li>
+    <strong>Assigned to:</strong>
+    <%= @opportunity.assigned_to %>
+  </li>
+
+  <li>
+    <strong>Close date:</strong>
+    <%= @opportunity.close_date %>
+  </li>
+
+  <li>
+    <strong>Discount:</strong>
+    <%= @opportunity.discount %>
+  </li>
+
+  <li>
+    <strong>Probability:</strong>
+    <%= @opportunity.probability %>
+  </li>
+
+  <li>
+    <strong>Stage:</strong>
+    <%= @opportunity.stage %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.opportunity_path(@conn, :edit, @opportunity) %></span>
+<span><%= link "Back", to: Routes.opportunity_path(@conn, :index) %></span>
