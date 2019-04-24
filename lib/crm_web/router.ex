@@ -18,6 +18,7 @@ defmodule CrmWeb.Router do
 
     get "/", PageController, :index
     resources "/accounts", AccountController
+    resources "/leads", LeadController
     resources "/opportunities", OpportunityController
   end
 

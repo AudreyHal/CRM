@@ -7,7 +7,8 @@ use Mix.Config
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
 config :crm, CrmWeb.Endpoint,
-  http: [port: 4000],
+  # http: [port: 4000],
+  http: [port: System.get_env("PORT") || 4000],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
@@ -68,8 +69,8 @@ config :phoenix, :plug_init_mode, :runtime
 
 # Configure your database
 config :crm, Crm.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "appuser",
+  password: "Neue.P455",
   database: "crm_dev",
   hostname: "localhost",
   pool_size: 10

@@ -84,6 +84,83 @@ defmodule Crm.SalesTest do
     end
   end
 
+  describe "leads" do
+    alias Crm.Sales.Lead
+
+    @valid_attrs %{city: "some city", company: "some company", country: "some country", department: "some department", email: "some email", first_name: "some first_name", last_name: "some last_name", phone: "some phone", status: "some status", street: "some street", title: "some title"}
+    @update_attrs %{city: "some updated city", company: "some updated company", country: "some updated country", department: "some updated department", email: "some updated email", first_name: "some updated first_name", last_name: "some updated last_name", phone: "some updated phone", status: "some updated status", street: "some updated street", title: "some updated title"}
+    @invalid_attrs %{city: nil, company: nil, country: nil, department: nil, email: nil, first_name: nil, last_name: nil, phone: nil, status: nil, street: nil, title: nil}
+
+    def lead_fixture(attrs \\ %{}) do
+      {:ok, lead} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Sales.create_lead()
+
+      lead
+    end
+
+    test "list_leads/0 returns all leads" do
+      lead = lead_fixture()
+      assert Sales.list_leads() == [lead]
+    end
+
+    test "get_lead!/1 returns the lead with given id" do
+      lead = lead_fixture()
+      assert Sales.get_lead!(lead.id) == lead
+    end
+
+    test "create_lead/1 with valid data creates a lead" do
+      assert {:ok, %Lead{} = lead} = Sales.create_lead(@valid_attrs)
+      assert lead.city == "some city"
+      assert lead.company == "some company"
+      assert lead.country == "some country"
+      assert lead.department == "some department"
+      assert lead.email == "some email"
+      assert lead.first_name == "some first_name"
+      assert lead.last_name == "some last_name"
+      assert lead.phone == "some phone"
+      assert lead.status == "some status"
+      assert lead.street == "some street"
+      assert lead.title == "some title"
+    end
+
+    test "create_lead/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Sales.create_lead(@invalid_attrs)
+    end
+
+    test "update_lead/2 with valid data updates the lead" do
+      lead = lead_fixture()
+      assert {:ok, %Lead{} = lead} = Sales.update_lead(lead, @update_attrs)
+      assert lead.city == "some updated city"
+      assert lead.company == "some updated company"
+      assert lead.country == "some updated country"
+      assert lead.department == "some updated department"
+      assert lead.email == "some updated email"
+      assert lead.first_name == "some updated first_name"
+      assert lead.last_name == "some updated last_name"
+      assert lead.phone == "some updated phone"
+      assert lead.status == "some updated status"
+      assert lead.street == "some updated street"
+      assert lead.title == "some updated title"
+    end
+
+    test "update_lead/2 with invalid data returns error changeset" do
+      lead = lead_fixture()
+      assert {:error, %Ecto.Changeset{}} = Sales.update_lead(lead, @invalid_attrs)
+      assert lead == Sales.get_lead!(lead.id)
+    end
+
+    test "delete_lead/1 deletes the lead" do
+      lead = lead_fixture()
+      assert {:ok, %Lead{}} = Sales.delete_lead(lead)
+      assert_raise Ecto.NoResultsError, fn -> Sales.get_lead!(lead.id) end
+    end
+
+    test "change_lead/1 returns a lead changeset" do
+      lead = lead_fixture()
+      assert %Ecto.Changeset{} = Sales.change_lead(lead)
+
   describe "opportunities" do
     alias Crm.Sales.Opportunity
 

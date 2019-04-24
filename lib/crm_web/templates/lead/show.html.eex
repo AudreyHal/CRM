@@ -1,0 +1,16 @@
+<div class="content">
+  <div class="columns">
+    <div class="column col-4 form-container">
+      <h3>Lead Details</h3>
+      <hr>
+      <h5><%= @lead.first_name %> <%= @lead.last_name %></h5>
+      <p><span class="icon"><i class="fa fa-envelope"></i> <%= @lead.email %></span></p>
+      <p><span class="icon"><i class="fa fa-phone"></i> <%= @lead.phone %></span></p>
+      <p><span class="icon"><i class="fa fa-user"></i> <%= @lead.department %></span></p>
+      <p><span class="icon"><i class="fa fa-address-book"></i>
+        <%= @lead.street %>, <%= @lead.city %>, <%= @lead.country %></span></p>
+      <br>
+    </div>
+    <div class="col-8"></div>
+  </div>
+</div>
