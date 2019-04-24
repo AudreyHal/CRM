@@ -3,3 +3,15 @@
 @import "./phoenix.css";
 @import "../node_modules/spectre.css/dist/spectre.min.css";
 @import "../node_modules/spectre.css/dist/spectre-exp.min.css";
+
+body{color:#152935; background-color: #f9f9f9; font-size:13px; font-family: Arial, Helvetica, sans-serif }
+.body_container{padding:30px}
+#top_nav{background-color:#152935 !important; width:100%; height:50px}
+.redd{color:red}
+
+#search {margin-left:30px !important; width:400px; font-size:13px}
+#search_box{width:100%}
+#right_nav{color:white !important; padding-right:20px} 
+#second_nav{padding:5px 0px; background-color: white; height:50px}
+.second_nav_link{padding-left:30px; color:#152935 !important; font-size:13px;}
+.btn:hover{color: #1a81bf !important; font-weight: 600}

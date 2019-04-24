@@ -9,23 +9,38 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   </head>
   <body>
-    <header>
-      <section class="container">
-        <nav role="navigation">
-          <ul>
-            <li><a href="https://hexdocs.pm/phoenix/overview.html">Get Started</a></li>
-          </ul>
-        </nav>
-        <a href="http://phoenixframework.org/" class="phx-logo">
-          <img src="<%= Routes.static_path(@conn, "/images/phoenix.png") %>" alt="Phoenix Framework Logo"/>
-        </a>
-      </section>
-    </header>
-    <main role="main" class="container">
+ 
+ <header class="navbar" id ="top_nav" >
+  <section class="navbar-section">
+    <div class="input-group input-inline " id="search">
+    
+      <input class="form-input column " type="text" placeholder="Search CRM" id="search_box">
+     
+    </div>
+  </section>
+  <section class="navbar-section" >
+  <div id="right_nav"> Sandra Eden</div>
+  </section>
+ 
+</header>
+ 
+ <header class="navbar">
+  <section class="navbar-section" id ="second_nav">
+
+        <a href="..." class="btn btn-link second_nav_link">Accounts</a>
+    <a href="..." class="btn btn-link second_nav_link">Opportunity</a>
+    <a href="..." class="btn btn-link second_nav_link">Contacts</a>
+     <a href="..." class="btn btn-link second_nav_link">Lead</a>
+  </section>
+  
+</header>
+
+    <main role="main" class="body_container">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
       <%= render @view_module, @view_template, assigns %>
     </main>
+    
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>
