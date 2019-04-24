@@ -18,6 +18,7 @@ defmodule CrmWeb.Router do
 
     get "/", PageController, :index
     resources "/accounts", AccountController
+    resources "/opportunities", OpportunityController
   end
 
   # Other scopes may use custom stacks.
