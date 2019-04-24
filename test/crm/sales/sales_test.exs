@@ -231,4 +231,79 @@ defmodule Crm.SalesTest do
       assert %Ecto.Changeset{} = Sales.change_opportunity(opportunity)
     end
   end
+
+  describe "contacts" do
+    alias Crm.Sales.Contact
+
+    @valid_attrs %{city: "some city", country: "some country", department: "some department", email: "some email", first_name: "some first_name", last_name: "some last_name", phone: "some phone", street: "some street", title: "some title"}
+    @update_attrs %{city: "some updated city", country: "some updated country", department: "some updated department", email: "some updated email", first_name: "some updated first_name", last_name: "some updated last_name", phone: "some updated phone", street: "some updated street", title: "some updated title"}
+    @invalid_attrs %{city: nil, country: nil, department: nil, email: nil, first_name: nil, last_name: nil, phone: nil, street: nil, title: nil}
+
+    def contact_fixture(attrs \\ %{}) do
+      {:ok, contact} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Sales.create_contact()
+
+      contact
+    end
+
+    test "list_contacts/0 returns all contacts" do
+      contact = contact_fixture()
+      assert Sales.list_contacts() == [contact]
+    end
+
+    test "get_contact!/1 returns the contact with given id" do
+      contact = contact_fixture()
+      assert Sales.get_contact!(contact.id) == contact
+    end
+
+    test "create_contact/1 with valid data creates a contact" do
+      assert {:ok, %Contact{} = contact} = Sales.create_contact(@valid_attrs)
+      assert contact.city == "some city"
+      assert contact.country == "some country"
+      assert contact.department == "some department"
+      assert contact.email == "some email"
+      assert contact.first_name == "some first_name"
+      assert contact.last_name == "some last_name"
+      assert contact.phone == "some phone"
+      assert contact.street == "some street"
+      assert contact.title == "some title"
+    end
+
+    test "create_contact/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Sales.create_contact(@invalid_attrs)
+    end
+
+    test "update_contact/2 with valid data updates the contact" do
+      contact = contact_fixture()
+      assert {:ok, %Contact{} = contact} = Sales.update_contact(contact, @update_attrs)
+      assert contact.city == "some updated city"
+      assert contact.country == "some updated country"
+      assert contact.department == "some updated department"
+      assert contact.email == "some updated email"
+      assert contact.first_name == "some updated first_name"
+      assert contact.last_name == "some updated last_name"
+      assert contact.phone == "some updated phone"
+      assert contact.street == "some updated street"
+      assert contact.title == "some updated title"
+    end
+
+    test "update_contact/2 with invalid data returns error changeset" do
+      contact = contact_fixture()
+      assert {:error, %Ecto.Changeset{}} = Sales.update_contact(contact, @invalid_attrs)
+      assert contact == Sales.get_contact!(contact.id)
+    end
+
+    test "delete_contact/1 deletes the contact" do
+      contact = contact_fixture()
+      assert {:ok, %Contact{}} = Sales.delete_contact(contact)
+      assert_raise Ecto.NoResultsError, fn -> Sales.get_contact!(contact.id) end
+    end
+
+    test "change_contact/1 returns a contact changeset" do
+      contact = contact_fixture()
+      assert %Ecto.Changeset{} = Sales.change_contact(contact)
+    end
+  end
 end
