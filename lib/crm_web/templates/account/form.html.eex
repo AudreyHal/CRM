@@ -1,0 +1,59 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <%= label f, :name %>
+  <%= text_input f, :name %>
+  <%= error_tag f, :name %>
+
+  <%= label f, :phone %>
+  <%= text_input f, :phone %>
+  <%= error_tag f, :phone %>
+
+  <%= label f, :email %>
+  <%= text_input f, :email %>
+  <%= error_tag f, :email %>
+
+  <%= label f, :assignee %>
+  <%= text_input f, :assignee %>
+  <%= error_tag f, :assignee %>
+
+  <%= label f, :category %>
+  <%= text_input f, :category %>
+  <%= error_tag f, :category %>
+
+  <%= label f, :rating %>
+  <%= number_input f, :rating %>
+  <%= error_tag f, :rating %>
+
+  <%= label f, :tags %>
+  <%= text_input f, :tags %>
+  <%= error_tag f, :tags %>
+
+  <%= label f, :address %>
+  <%= text_input f, :address %>
+  <%= error_tag f, :address %>
+
+  <%= label f, :city %>
+  <%= text_input f, :city %>
+  <%= error_tag f, :city %>
+
+  <%= label f, :country %>
+  <%= text_input f, :country %>
+  <%= error_tag f, :country %>
+
+  <%= label f, :zipcode %>
+  <%= number_input f, :zipcode %>
+  <%= error_tag f, :zipcode %>
+
+  <%= label f, :website %>
+  <%= text_input f, :website %>
+  <%= error_tag f, :website %>
+
+  <div>
+    <%= submit "Save" %>
+  </div>
+<% end %>
