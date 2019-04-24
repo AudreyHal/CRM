@@ -5,7 +5,7 @@
 @import "../node_modules/spectre.css/dist/spectre-exp.min.css";
 
 body{color:#152935; background-color: #f9f9f9; font-size:13px; font-family: Arial, Helvetica, sans-serif }
-.body_container{padding:30px}
+.body_container{padding:15px 30px }
 #top_nav{background-color:#152935 !important; width:100%; height:50px}
 .redd{color:red}
 
@@ -15,3 +15,16 @@ body{color:#152935; background-color: #f9f9f9; font-size:13px; font-family: Aria
 #second_nav{padding:5px 0px; background-color: white; height:50px}
 .second_nav_link{padding-left:30px; color:#152935 !important; font-size:13px;}
 .btn:hover{color: #1a81bf !important; font-weight: 600}
+.table{background-color: #ffffff}
+.acc_btn{background-color: #1a81bf;  font-size:13px; color:#ffffff !important; border-radius:3px; border:0px; margin:15px 0px}
+.fa-plus{padding-right:5px}
+.acc_form{background-color: #ffffff; padding: 5px 15px; font-size: 12px; border-radius:5px}
+
+.form_title{border-bottom: 1px #dfe3e6 solid; padding:6px 15px; margin:6px -15px;  font-size: 14px; font-weight: 600}
+.new_cl{padding-top: 15px }
+.form-input{border-radius: 4px; border:1px #dfe3e6 solid !important; color: #9b9b9b; font-size:12px;}
+.form-label1{color: #727272; }
+.acc_btn3{width:156px; ; height:36px; background-color: #ffffff; font-size:14px;  padding:8px 10px 8px 10px ; line-height: 20px; border:1px solid #c4cdd5; float:right }
+.acc_btn_save{width:156px;  height:36px; background-color: #1a81bf; font-size:13px;  padding: 6px 12px; /* line-height: 20px; */ border:0;  font-weight: bold; color:white; margin-bottom: 20px}
+.button_div{ padding:2px 2px;   width:100%; }
+.border{border-top:1px #dfe3e6 solid; margin:30px -15px 10px -15px ; }

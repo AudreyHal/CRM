@@ -9,6 +9,7 @@ defmodule CrmWeb.AccountController do
     render(conn, "index.html", accounts: accounts)
   end
 
+  @spec new(Plug.Conn.t(), any()) :: Plug.Conn.t()
   def new(conn, _params) do
     changeset = Sales.change_account(%Account{})
     render(conn, "new.html", changeset: changeset)
@@ -58,5 +59,21 @@ defmodule CrmWeb.AccountController do
     conn
     |> put_flash(:info, "Account deleted successfully.")
     |> redirect(to: Routes.account_path(conn, :index))
+  end
+
+  def addnote(conn, %{"id" => id, "note" => note_params}) do
+    #id = Map.get(note_params, "account_id")
+    account= Sales.get_account!(id)
+    case Sales.create_account_note(account, note_params) do
+      {:ok, note} ->
+        conn
+        |> put_flash(:info, "Note created successfully.")
+        |> redirect(to: Routes.account_path(conn, :show, account))
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+
+
+        render(conn, "show.html", changeset: changeset, account: account)
+    end
   end
 end
