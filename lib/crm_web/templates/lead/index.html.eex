@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="columns">
+    <div class="column col-12 column-top">
+      <span class="btn btn-custom">+ <%= link "New Lead", to: Routes.lead_path(@conn, :new) %></span>
+    </div>
+    <div class="column col-10 col-xl-10 col-lg-10 col-xs-10">col-xs-10</div>
+    <div class="column col-2 col-xl-2 col-xl-10 col-xs-2">col-xs-2</div>
+  </div>
+</div>

@@ -7,7 +7,7 @@ defmodule CrmWeb.Acceptance.LeadIndexTest do
   test "presence of new lead button" do
     navigate_to("/leads")
 
-    button = find_element(:class, "btn-custom") |> visible_text()
+    button = find_element(:css, ".btn-custom a") |> visible_text()
     assert button == "New Lead"
   end
 end
