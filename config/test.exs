@@ -5,7 +5,7 @@ use Mix.Config
 config :crm, CrmWeb.Endpoint,
   http: [port: 4001],
   server: true
-  
+
 config :hound, driver: "phantomjs"
 
 # Print only warnings and errors during test
@@ -13,8 +13,8 @@ config :logger, level: :warn
 
 # Configure your database
 config :crm, Crm.Repo,
-  username: "appuser",
-  password: "Neue.P455",
+  username: "postgres",
+  password: "postgres",
   database: "crm_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox

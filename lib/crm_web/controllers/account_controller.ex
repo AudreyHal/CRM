@@ -29,7 +29,8 @@ defmodule CrmWeb.AccountController do
 
   def show(conn, %{"id" => id}) do
     account = Sales.get_account!(id)
-    render(conn, "show.html", account: account)
+    changeset = Sales.build_account_note(account)
+    render(conn, "show.html", account: account, changeset: changeset)
   end
 
   def edit(conn, %{"id" => id}) do

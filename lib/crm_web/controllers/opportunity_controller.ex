@@ -33,7 +33,8 @@ defmodule CrmWeb.OpportunityController do
 
   def show(conn, %{"id" => id}) do
     opportunity = Sales.get_opportunity!(id)
-    render(conn, "show.html", opportunity: opportunity)
+    changeset = Sales.build_opportunity_note(opportunity)
+    render(conn, "show.html", opportunity: opportunity, changeset: changeset)
   end
 
   def edit(conn, %{"id" => id}) do
@@ -63,5 +64,18 @@ defmodule CrmWeb.OpportunityController do
     conn
     |> put_flash(:info, "Opportunity deleted successfully.")
     |> redirect(to: Routes.opportunity_path(conn, :index))
+  end
+
+  def addnote(conn, %{"id" => id, "note" => note_params}) do
+    opportunity = Sales.get_opportunity!(id)
+    case Sales.create_opportunity_note(opportunity, note_params) do
+      {:ok, note} ->
+        conn
+        |> put_flash(:info, "Note created successfully.")
+        |> redirect(to: Routes.opportunity_path(conn, :show, opportunity))
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+        render(conn, "show.html", changeset: changeset, opportunity: opportunity)
+    end
   end
 end

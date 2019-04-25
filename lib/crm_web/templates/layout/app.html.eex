@@ -29,7 +29,7 @@
 
         <a href="/accounts" class="btn btn-link second_nav_link">Accounts</a>
     <a href="/opportunities" class="btn btn-link second_nav_link">Opportunity</a>
-    <a href="/contacts." class="btn btn-link second_nav_link">Contacts</a>
+    <a href="/contacts" class="btn btn-link second_nav_link">Contacts</a>
      <a href="/leads" class="btn btn-link second_nav_link">Lead</a>
   </section>
   

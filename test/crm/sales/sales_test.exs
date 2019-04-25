@@ -306,4 +306,63 @@ defmodule Crm.SalesTest do
       assert %Ecto.Changeset{} = Sales.change_contact(contact)
     end
   end
+
+  describe "notes" do
+    alias Crm.Sales.Note
+
+    @valid_attrs %{description: "some description"}
+    @update_attrs %{description: "some updated description"}
+    @invalid_attrs %{description: nil}
+
+    def note_fixture(attrs \\ %{}) do
+      {:ok, note} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Sales.create_note()
+
+      note
+    end
+
+    test "list_notes/0 returns all notes" do
+      note = note_fixture()
+      assert Sales.list_notes() == [note]
+    end
+
+    test "get_note!/1 returns the note with given id" do
+      note = note_fixture()
+      assert Sales.get_note!(note.id) == note
+    end
+
+    test "create_note/1 with valid data creates a note" do
+      assert {:ok, %Note{} = note} = Sales.create_note(@valid_attrs)
+      assert note.description == "some description"
+    end
+
+    test "create_note/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Sales.create_note(@invalid_attrs)
+    end
+
+    test "update_note/2 with valid data updates the note" do
+      note = note_fixture()
+      assert {:ok, %Note{} = note} = Sales.update_note(note, @update_attrs)
+      assert note.description == "some updated description"
+    end
+
+    test "update_note/2 with invalid data returns error changeset" do
+      note = note_fixture()
+      assert {:error, %Ecto.Changeset{}} = Sales.update_note(note, @invalid_attrs)
+      assert note == Sales.get_note!(note.id)
+    end
+
+    test "delete_note/1 deletes the note" do
+      note = note_fixture()
+      assert {:ok, %Note{}} = Sales.delete_note(note)
+      assert_raise Ecto.NoResultsError, fn -> Sales.get_note!(note.id) end
+    end
+
+    test "change_note/1 returns a note changeset" do
+      note = note_fixture()
+      assert %Ecto.Changeset{} = Sales.change_note(note)
+    end
+  end
 end

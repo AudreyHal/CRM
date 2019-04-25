@@ -1,6 +1,7 @@
 defmodule Crm.Sales.Lead do
   use Ecto.Schema
   import Ecto.Changeset
+  alias Crm.Sales.Note
 
   schema "leads" do
     field :city, :string
@@ -14,6 +15,7 @@ defmodule Crm.Sales.Lead do
     field :status, :string
     field :street, :string
     field :title, :string
+    has_many :notes, Note
 
     timestamps()
   end

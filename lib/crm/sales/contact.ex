@@ -1,6 +1,7 @@
 defmodule Crm.Sales.Contact do
   use Ecto.Schema
   import Ecto.Changeset
+  alias Crm.Sales.Note
   alias MiniCrm.Sales.{Account}
 
   schema "contacts" do
@@ -14,6 +15,7 @@ defmodule Crm.Sales.Contact do
     field :street, :string
     field :title, :string
     belongs_to :accounts, Account, foreign_key: :account_id
+    has_many :notes, Note
 
     timestamps()
   end
