@@ -1,22 +1,9 @@
 defmodule Crm.Sales do
-  @moduledoc """
-  The Sales context.
-  """
-
   import Ecto.Query, warn: false
   alias Crm.Repo
+  alias Crm.Sales.{Account, Lead, Opportunity}
 
-  alias Crm.Sales.Account
 
-  @doc """
-  Returns the list of accounts.
-
-  ## Examples
-
-      iex> list_accounts()
-      [%Account{}, ...]
-
-  """
   def list_accounts do
     Repo.all(Account)
   end
@@ -25,130 +12,73 @@ defmodule Crm.Sales do
     Repo.all(Account) |> Enum.map(&{&1.name, &1.id})
   end
 
-  @doc """
-  Gets a single account.
-
-  Raises `Ecto.NoResultsError` if the Account does not exist.
-
-  ## Examples
-
-      iex> get_account!(123)
-      %Account{}
-
-      iex> get_account!(456)
-      ** (Ecto.NoResultsError)
-
-  """
   def get_account!(id), do: Repo.get!(Account, id)
 
-  @doc """
-  Creates a account.
-
-  ## Examples
-
-      iex> create_account(%{field: value})
-      {:ok, %Account{}}
-
-      iex> create_account(%{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
   def create_account(attrs \\ %{}) do
     %Account{}
     |> Account.changeset(attrs)
     |> Repo.insert()
   end
 
-  @doc """
-  Updates a account.
-
-  ## Examples
-
-      iex> update_account(account, %{field: new_value})
-      {:ok, %Account{}}
-
-      iex> update_account(account, %{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
   def update_account(%Account{} = account, attrs) do
     account
     |> Account.changeset(attrs)
     |> Repo.update()
   end
 
-  @doc """
-  Deletes a Account.
-
-  ## Examples
-
-      iex> delete_account(account)
-      {:ok, %Account{}}
-
-      iex> delete_account(account)
-      {:error, %Ecto.Changeset{}}
-
-  """
   def delete_account(%Account{} = account) do
     Repo.delete(account)
   end
 
-  @doc """
-  Returns an `%Ecto.Changeset{}` for tracking account changes.
-
-  ## Examples
-
-      iex> change_account(account)
-      %Ecto.Changeset{source: %Account{}}
-
-  """
   def change_account(%Account{} = account) do
     Account.changeset(account, %{})
   end
 
-  alias Crm.Sales.Opportunity
+  #---------------------------- Lead --------------------------- #
+  def list_leads do
+    Repo.all(Lead)
+  end
 
-  @doc """
-  Returns the list of opportunities.
+  def get_lead!(id), do: Repo.get!(Lead, id)
 
-  ## Examples
+  def create_lead(attrs \\ %{}) do
+    %Lead{}
+    |> Lead.changeset(attrs)
+    |> Repo.insert()
+  end
 
-      iex> list_opportunities()
-      [%Opportunity{}, ...]
+  def update_lead(%Lead{} = lead, attrs) do
+    lead
+    |> Lead.changeset(attrs)
+    |> Repo.update()
+  end
 
-  """
+  def delete_lead(%Lead{} = lead) do
+    Repo.delete(lead)
+  end
+
+  def change_lead(%Lead{} = lead) do
+    Lead.changeset(lead, %{})
+  end
+
+  def get_title do
+    ["Mr", "Mrs", "Miss", "Dr.", "Prof."]
+  end
+
+  def get_statuses do
+    ["New", "Contacted", "Converted", "Rejected", "Other"]
+  end
+
+  def get_countries do
+    ["Afghanistan", "Albania", "Algeria", "American Samoa", "Angola", "Anguilla", "Antartica", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Ashmore and Cartier Island", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burma", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Central African Republic", "Chad", "Chile", "China", "Christmas Island", "Clipperton Island", "Cocos (Keeling) Islands", "Colombia", "Comoros", "Congo, Democratic Republic of the", "Congo, Republic of the", "Cook Islands", "Costa Rica", "Cote d'Ivoire", "Croatia", "Cuba", "Cyprus", "Czeck Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Europa Island", "Falkland Islands (Islas Malvinas)", "Faroe Islands", "Fiji", "Finland", "France", "French Guiana", "French Polynesia", "French Southern and Antarctic Lands", "Gabon", "Gambia, The", "Gaza Strip", "Georgia", "Germany", "Ghana", "Gibraltar", "Glorioso Islands", "Greece", "Greenland", "Grenada", "Guadeloupe", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Heard Island and McDonald Islands", "Holy See (Vatican City)", "Honduras", "Hong Kong", "Howland Island", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Ireland, Northern", "Israel", "Italy", "Jamaica", "Jan Mayen", "Japan", "Jarvis Island", "Jersey", "Johnston Atoll", "Jordan", "Juan de Nova Island", "Kazakhstan", "Kenya", "Kiribati", "Korea, North", "Korea, South", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau", "Macedonia, Former Yugoslav Republic of", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Man, Isle of", "Marshall Islands", "Martinique", "Mauritania", "Mauritius", "Mayotte", "Mexico", "Micronesia, Federated States of", "Midway Islands", "Moldova", "Monaco", "Mongolia", "Montserrat", "Morocco", "Mozambique", "Namibia", "Nauru", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Niue", "Norfolk Island", "Northern Mariana Islands", "Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Pitcaim Islands", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romainia", "Russia", "Rwanda", "Saint Helena", "Saint Kitts and Nevis", "Saint Lucia", "Saint Pierre and Miquelon", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Scotland", "Senegal", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Georgia and South Sandwich Islands", "Spain", "Spratly Islands", "Sri Lanka", "Sudan", "Suriname", "Svalbard", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Tobago", "Toga", "Tokelau", "Tonga", "Trinidad", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "Uruguay", "USA", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Virgin Islands", "Wales", "Wallis and Futuna", "West Bank", "Western Sahara", "Yemen", "Yugoslavia", "Zambia", "Zimbabwe"]
+  end
+
   def list_opportunities do
     Repo.all(Opportunity)
   end
 
-  @doc """
-  Gets a single opportunity.
-
-  Raises `Ecto.NoResultsError` if the Opportunity does not exist.
-
-  ## Examples
-
-      iex> get_opportunity!(123)
-      %Opportunity{}
-
-      iex> get_opportunity!(456)
-      ** (Ecto.NoResultsError)
-
-  """
   def get_opportunity!(id), do: Repo.get!(Opportunity, id)
 
-  @doc """
-  Creates a opportunity.
-
-  ## Examples
-
-      iex> create_opportunity(%{field: value})
-      {:ok, %Opportunity{}}
-
-      iex> create_opportunity(%{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
   def create_opportunity(%Account{} = account, attrs \\ %{}) do
     account
     |> Ecto.build_assoc(:opportunities)
@@ -156,50 +86,113 @@ defmodule Crm.Sales do
     |> Repo.insert()
   end
 
-  @doc """
-  Updates a opportunity.
-
-  ## Examples
-
-      iex> update_opportunity(opportunity, %{field: new_value})
-      {:ok, %Opportunity{}}
-
-      iex> update_opportunity(opportunity, %{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
   def update_opportunity(%Opportunity{} = opportunity, attrs) do
     opportunity
     |> Opportunity.changeset(attrs)
     |> Repo.update()
   end
 
-  @doc """
-  Deletes a Opportunity.
-
-  ## Examples
-
-      iex> delete_opportunity(opportunity)
-      {:ok, %Opportunity{}}
-
-      iex> delete_opportunity(opportunity)
-      {:error, %Ecto.Changeset{}}
-
-  """
   def delete_opportunity(%Opportunity{} = opportunity) do
     Repo.delete(opportunity)
   end
 
+  def change_opportunity(%Opportunity{} = opportunity) do
+    Opportunity.changeset(opportunity, %{})
+  end
+
+  alias Crm.Sales.Contact
+
   @doc """
-  Returns an `%Ecto.Changeset{}` for tracking opportunity changes.
+  Returns the list of contacts.
 
   ## Examples
 
-      iex> change_opportunity(opportunity)
-      %Ecto.Changeset{source: %Opportunity{}}
+      iex> list_contacts()
+      [%Contact{}, ...]
 
   """
-  def change_opportunity(%Opportunity{} = opportunity) do
-    Opportunity.changeset(opportunity, %{})
+  def list_contacts do
+    Repo.all(Contact)
+  end
+
+  @doc """
+  Gets a single contact.
+
+  Raises `Ecto.NoResultsError` if the Contact does not exist.
+
+  ## Examples
+
+      iex> get_contact!(123)
+      %Contact{}
+
+      iex> get_contact!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_contact!(id), do: Repo.get!(Contact, id)
+
+  @doc """
+  Creates a contact.
+
+  ## Examples
+
+      iex> create_contact(%{field: value})
+      {:ok, %Contact{}}
+
+      iex> create_contact(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_contact(attrs \\ %{}) do
+    %Contact{}
+    |> Contact.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a contact.
+
+  ## Examples
+
+      iex> update_contact(contact, %{field: new_value})
+      {:ok, %Contact{}}
+
+      iex> update_contact(contact, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_contact(%Contact{} = contact, attrs) do
+    contact
+    |> Contact.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a Contact.
+
+  ## Examples
+
+      iex> delete_contact(contact)
+      {:ok, %Contact{}}
+
+      iex> delete_contact(contact)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_contact(%Contact{} = contact) do
+    Repo.delete(contact)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking contact changes.
+
+  ## Examples
+
+      iex> change_contact(contact)
+      %Ecto.Changeset{source: %Contact{}}
+
+  """
+  def change_contact(%Contact{} = contact) do
+    Contact.changeset(contact, %{})
   end
 end

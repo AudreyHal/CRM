@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="columns">
+    <div class="column col-12 column-top">
+      <span class="btn btn-custom">+ <%= link "New Lead", to: Routes.lead_path(@conn, :new) %></span>
+    </div>
+    <%= if length(@leads) == 0 do %>
+      <div class="column col-12">
+        <p class="empty-leads">No leads created yet.</p>
+      </div>
+    <% else %>
+      <div class="column col-10 col-xl-10 col-lg-10 col-xs-10">
+        <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Full name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Status</th>
+            <th>Company</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= for lead <- @leads do %>
+            <tr>
+              <td><%= lead.first_name %> <%= lead.last_name %></td>
+              <td><%= lead.email %></td>
+              <td><%= lead.phone %></td>
+              <td><%= lead.status %></td>
+              <td><%= lead.company %></td>
+              <td>
+                <%= link "Show", to: Routes.lead_path(@conn, :show, lead), class: "btn btn-link show-link" %>
+              </td>
+          <% end %>
+        </tbody>
+      </table>
+      </div>
+      <div class="column col-2 col-xl-2 col-xl-10 col-xs-2">col-xs-2</div>
+    <% end %>
+    
+  </div>
+</div>
