@@ -1,37 +1,62 @@
+<div class="columns main_form">
+  
+  <div class="column col-lg-4 col-sm-0 col-md-2"> </div>
+  <div class="acc_form column col-lg-4 col-sm-12 col-md-8">
+  <div class="form_title">New Opportunity</div>
 <%= form_for @changeset, @action, fn f -> %>
   <%= if @changeset.action do %>
     <div class="alert alert-danger">
       <p>Oops, something went wrong! Please check the errors below.</p>
     </div>
   <% end %>
-
-  <%= label f, :name %>
-  <%= text_input f, :name %>
+<div class="columns new_cl">
+   <div class="column col-12">
+   <div class="form-group">
+  <%= label f, :name, class: "form-label1" %>
+  <%= text_input f, :name, class: "form-input" %>
   <%= error_tag f, :name %>
+  </div> </div> </div>
 
-  <%= label f, :amount %>
-  <%= number_input f, :amount, step: "any" %>
+<div class="columns new_cl">
+   <div class="column col-6">
+   <div class="form-group">
+  <%= label f, :amount, class: "form-label1" %>
+  <%= number_input f, :amount, step: "any", class: "form-input" %>
   <%= error_tag f, :amount %>
-
-  <%= label f, :assigned_to %>
-  <%= text_input f, :assigned_to %>
+  </div> </div>
+<div class="column col-6">
+   <div class="form-group">
+  <%= label f, :assigned_to, class: "form-label1" %>
+  <%= text_input f, :assigned_to, class: "form-input" %>
   <%= error_tag f, :assigned_to %>
+  </div> </div> </div>
 
-  <%= label f, :close_date %>
-  <%= date_select f, :close_date %>
+  <div class="columns new_cl">
+   <div class="column col-6">
+   <div class="form-group">
+  <%= label f, :close_date, class: "form-label1" %>
+  <%= text_input f, :close_date, class: "form-input", type: "date" %>
   <%= error_tag f, :close_date %>
-
-  <%= label f, :discount %>
-  <%= text_input f, :discount %>
+</div> </div>
+<div class="column col-6">
+   <div class="form-group">
+  <%= label f, :discount, class: "form-label1" %>
+  <%= text_input f, :discount, class: "form-input" %>
   <%= error_tag f, :discount %>
-
-  <%= label f, :probability %>
-  <%= text_input f, :probability %>
+</div> </div> </div>
+<div class="columns new_cl">
+   <div class="column col-6">
+   <div class="form-group">
+  <%= label f, :probability, class: "form-label1" %>
+  <%= text_input f, :probability, class: "form-input" %>
   <%= error_tag f, :probability %>
-
-  <%= label f, :stage %>
-  <%= text_input f, :stage %>
+</div> </div>
+<div class="column col-6">
+   <div class="form-group">
+  <%= label f, :stage, class: "form-label1" %>
+  <%= text_input f, :stage, class: "form-input" %>
   <%= error_tag f, :stage %>
+</div> </div> </div>
 
   <div class="form-group">
   <%= label f, :account_id, class: "form-label" %>
@@ -39,7 +64,11 @@
  <%= error_tag f, :account_id %>
 </div>
 
-  <div>
-    <%= submit "Save" %>
+  <div class="button_div">
+    <%= submit "Save", class: "btn acc_btn_save float-right" %>
   </div>
 <% end %>
+</div>
+ <div class="column col-lg-4 col-sm-0 col-md-2"> </div>
+
+ </div>

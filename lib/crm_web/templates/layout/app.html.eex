@@ -27,10 +27,10 @@
  <header class="navbar">
   <section class="navbar-section" id ="second_nav">
 
-        <a href="..." class="btn btn-link second_nav_link">Accounts</a>
+        <a href="/accounts" class="btn btn-link second_nav_link">Accounts</a>
     <a href="/opportunities" class="btn btn-link second_nav_link">Opportunity</a>
-    <a href="..." class="btn btn-link second_nav_link">Contacts</a>
-     <a href="..." class="btn btn-link second_nav_link">Lead</a>
+    <a href="/contacts." class="btn btn-link second_nav_link">Contacts</a>
+     <a href="/leads" class="btn btn-link second_nav_link">Lead</a>
   </section>
   
 </header>
@@ -41,7 +41,28 @@
       <%= render @view_module, @view_template, assigns %>
     </main>
     
-    
+    <script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>

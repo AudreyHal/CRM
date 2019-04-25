@@ -1,10 +1,10 @@
 <div class="content">
   <div class="columns">
-    <div class="column col-11">
-      <span class="float-right"><%= link "Create Opportunity", to: Routes.opportunity_path(@conn, :new), class: "btn btn-primary" %></span>
+    <div class="column">
+      <a class="btn acc_btn"   href="/opportunities/new" ><i class="fas fa-plus">  </i> Create opportunity </a>
     </div>
-    <div class="column col-11 col-mx-auto">
-      <table class="table table-striped table-hover">
+    <div class="column col-12 col-mx-auto">
+      <table class="table table-striped table-hover trans-table">
         <thead>
           <tr>
             <th>Account</th>
@@ -13,6 +13,7 @@
             <th>Probability</th>
             <th>Assigned to</th>
             <th>Close Date</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -24,6 +25,16 @@
             <td><%= opportunity.probability %></td>
             <td><%= opportunity.assigned_to %></td>
             <td><%= opportunity.close_date %></td>
+            <td><div class="dropdown">
+              <button onclick="myFunction()" class="dropbtn btn btn-sm"><i class="fa fa-caret-down"></i></button>
+              <div id="myDropdown" class="dropdown-content">
+                <%= link "Show", to: Routes.opportunity_path(@conn, :show, opportunity) %>
+                <%= link "Edit", to: Routes.opportunity_path(@conn, :edit, opportunity) %>
+                <%= link "Delete", to: Routes.opportunity_path(@conn, :delete, opportunity), method: :delete, data: [confirm: "Are you sure?"] %>
+              </div>
+            </div>
+            
+            </td>
           </tr>
       <% end %>
         </tbody>
