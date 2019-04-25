@@ -20,6 +20,7 @@ defmodule CrmWeb.Router do
     resources "/accounts", AccountController
     resources "/leads", LeadController
     resources "/opportunities", OpportunityController
+    resources "/contacts", ContactController
   end
 
   # Other scopes may use custom stacks.

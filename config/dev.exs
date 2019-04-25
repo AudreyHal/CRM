@@ -69,8 +69,8 @@ config :phoenix, :plug_init_mode, :runtime
 
 # Configure your database
 config :crm, Crm.Repo,
-  username: "appuser",
-  password: "Neue.P455",
+  username: "postgres",
+  password: "postgres",
   database: "crm_dev",
   hostname: "localhost",
   pool_size: 10

@@ -1,7 +1,7 @@
 defmodule Crm.Sales.Contact do
   use Ecto.Schema
   import Ecto.Changeset
-  alias MiniCrm.Sales.{Account}
+  alias Crm.Sales.{Account}
 
   schema "contacts" do
     field :city, :string

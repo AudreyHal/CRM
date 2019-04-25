@@ -2,7 +2,7 @@ defmodule Crm.Sales.Account do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias Crm.Sales.Opportunity
+  alias Crm.Sales.{Opportunity, Contact}
 
   schema "accounts" do
     field :address, :string
@@ -18,6 +18,7 @@ defmodule Crm.Sales.Account do
     field :website, :string
     field :zipcode, :integer
     has_many :opportunities, Opportunity
+    has_many :contacts, Contact
 
     timestamps()
   end

@@ -13,7 +13,6 @@
             <th>Probability</th>
             <th>Assigned to</th>
             <th>Close Date</th>
-            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -25,16 +24,6 @@
             <td><%= opportunity.probability %></td>
             <td><%= opportunity.assigned_to %></td>
             <td><%= opportunity.close_date %></td>
-            <td><div class="dropdown">
-              <button onclick="myFunction()" class="dropbtn btn btn-sm"><i class="fa fa-caret-down"></i></button>
-              <div id="myDropdown" class="dropdown-content">
-                <%= link "Show", to: Routes.opportunity_path(@conn, :show, opportunity) %>
-                <%= link "Edit", to: Routes.opportunity_path(@conn, :edit, opportunity) %>
-                <%= link "Delete", to: Routes.opportunity_path(@conn, :delete, opportunity), method: :delete, data: [confirm: "Are you sure?"] %>
-              </div>
-            </div>
-            
-            </td>
           </tr>
       <% end %>
         </tbody>

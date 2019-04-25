@@ -112,7 +112,7 @@ defmodule Crm.Sales do
 
   """
   def list_contacts do
-    Repo.all(Contact)
+    Repo.all(Contact) |> Repo.preload(:account)
   end
 
   @doc """
@@ -129,7 +129,7 @@ defmodule Crm.Sales do
       ** (Ecto.NoResultsError)
 
   """
-  def get_contact!(id), do: Repo.get!(Contact, id)
+  def get_contact!(id), do: Repo.get!(Contact, id)|> Repo.preload(:accounts)
 
   @doc """
   Creates a contact.
@@ -143,8 +143,9 @@ defmodule Crm.Sales do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_contact(attrs \\ %{}) do
-    %Contact{}
+  def create_contact(%Account{} = account, attrs \\ %{}) do
+    account
+    |> Ecto.build_assoc(:contacts)
     |> Contact.changeset(attrs)
     |> Repo.insert()
   end
@@ -195,4 +196,5 @@ defmodule Crm.Sales do
   def change_contact(%Contact{} = contact) do
     Contact.changeset(contact, %{})
   end
+
 end
