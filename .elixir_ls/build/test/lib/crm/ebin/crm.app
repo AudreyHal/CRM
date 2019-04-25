@@ -8,6 +8,7 @@
                         'Elixir.Crm.DataCase','Elixir.Crm.Repo',
                         'Elixir.Crm.Sales','Elixir.Crm.Sales.Account',
                         'Elixir.Crm.Sales.Contact','Elixir.Crm.Sales.Lead',
+                        'Elixir.Crm.Sales.Note',
                         'Elixir.Crm.Sales.Opportunity','Elixir.CrmWeb',
                         'Elixir.CrmWeb.AccountController',
                         'Elixir.CrmWeb.AccountView',

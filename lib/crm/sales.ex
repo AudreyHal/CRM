@@ -12,7 +12,8 @@ defmodule Crm.Sales do
     Repo.all(Account) |> Enum.map(&{&1.name, &1.id})
   end
 
-  def get_account!(id), do: Repo.get!(Account, id)
+  def get_account!(id), do: Repo.get!(Account, id) |> Repo.preload(:notes) |> Repo.preload(:opportunities)
+
 
   def create_account(attrs \\ %{}) do
     %Account{}
@@ -39,7 +40,7 @@ defmodule Crm.Sales do
     Repo.all(Lead)
   end
 
-  def get_lead!(id), do: Repo.get!(Lead, id)
+  def get_lead!(id), do: Repo.get!(Lead, id) |> Repo.preload(:notes)
 
   def create_lead(attrs \\ %{}) do
     %Lead{}
@@ -77,7 +78,7 @@ defmodule Crm.Sales do
     Repo.all(Opportunity)
   end
 
-  def get_opportunity!(id), do: Repo.get!(Opportunity, id)
+  def get_opportunity!(id), do: Repo.get!(Opportunity, id) |> Repo.preload(:notes)
 
   def create_opportunity(%Account{} = account, attrs \\ %{}) do
     account
@@ -129,7 +130,7 @@ defmodule Crm.Sales do
       ** (Ecto.NoResultsError)
 
   """
-  def get_contact!(id), do: Repo.get!(Contact, id)|> Repo.preload(:accounts)
+  def get_contact!(id), do: Repo.get!(Contact, id)|> Repo.preload(:accounts) |> Repo.preload(:notes)
 
   @doc """
   Creates a contact.
@@ -197,4 +198,122 @@ defmodule Crm.Sales do
     Contact.changeset(contact, %{})
   end
 
+
+  alias Crm.Sales.Note
+
+  @doc """
+  Returns the list of notes.
+
+  ## Examples
+
+      iex> list_notes()
+      [%Note{}, ...]
+
+  """
+  def list_notes do
+    Repo.all(Note)
+  end
+
+  @doc """
+  Gets a single note.
+
+  Raises `Ecto.NoResultsError` if the Note does not exist.
+
+  ## Examples
+
+      iex> get_note!(123)
+      %Note{}
+
+      iex> get_note!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_note!(id), do: Repo.get!(Note, id)
+
+  @doc """
+  Creates a note.
+
+  ## Examples
+
+      iex> create_note(%{field: value})
+      {:ok, %Note{}}
+
+      iex> create_note(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_note(attrs \\ %{}) do
+    %Note{}
+    |> Note.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a note.
+
+  ## Examples
+
+      iex> update_note(note, %{field: new_value})
+      {:ok, %Note{}}
+
+      iex> update_note(note, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_note(%Note{} = note, attrs) do
+    note
+    |> Note.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a Note.
+
+  ## Examples
+
+      iex> delete_note(note)
+      {:ok, %Note{}}
+
+      iex> delete_note(note)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_note(%Note{} = note) do
+    Repo.delete(note)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking note changes.
+
+  ## Examples
+
+      iex> change_note(note)
+      %Ecto.Changeset{source: %Note{}}
+
+  """
+  def change_note(%Note{} = note) do
+    Note.changeset(note, %{})
+  end
+
+  def create_account_note(%Account{} = account, attrs \\ %{}) do
+    build_account_note(account, attrs)
+    |> Repo.insert()
+  end
+
+
+  def build_account_note(%Account{} = account, attrs \\ %{}) do
+    Ecto.build_assoc(account, :notes)
+    |> Note.changeset(attrs)
+   end
+
+   def create_opportunity_note(%Opportunity{} = opportunity, attrs \\ %{}) do
+    build_opportunity_note(opportunity, attrs)
+    |> Repo.insert()
+  end
+
+
+  def build_opportunity_note(%Opportunity{} = opportunity, attrs \\ %{}) do
+    Ecto.build_assoc(opportunity, :notes)
+    |> Note.changeset(attrs)
+   end
 end

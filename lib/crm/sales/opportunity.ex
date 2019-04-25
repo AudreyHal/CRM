@@ -1,6 +1,7 @@
 defmodule Crm.Sales.Opportunity do
   use Ecto.Schema
   import Ecto.Changeset
+  alias Crm.Sales.Note
 
 
   schema "opportunities" do
@@ -12,6 +13,7 @@ defmodule Crm.Sales.Opportunity do
     field :probability, :string
     field :stage, :string
     belongs_to :account, Account
+    has_many :notes, Note
 
     timestamps()
   end

@@ -8,13 +8,8 @@
       <th>Email</th>
       <th>Assignee</th>
       <th>Category</th>
-      <th>Rating</th>
       <th>Tags</th>
-      <th>Address</th>
-      <th>City</th>
-      <th>Country</th>
-      <th>Zipcode</th>
-      <th>Website</th>
+      
 
     
     </tr>
@@ -27,13 +22,9 @@
       <td><%= account.email %></td>
       <td><%= account.assignee %></td>
       <td><%= account.category %></td>
-      <td><%= account.rating %></td>
+     
       <td><%= account.tags %></td>
-      <td><%= account.address %></td>
-      <td><%= account.city %></td>
-      <td><%= account.country %></td>
-      <td><%= account.zipcode %></td>
-      <td><%= account.website %></td>
+   
     </tr>
 <% end %>
   </tbody>
