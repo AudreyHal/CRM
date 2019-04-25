@@ -1,14 +1,16 @@
 
 <a class="btn acc_btn"   href="/accounts/new" ><i class="fas fa-plus">  </i> Create Account </a>
+<div class="columns">
+<div class="column col-9 ">
 <table class="table table-striped table-hover trans-table   ">
   <thead>
     <tr>
       <th>Name</th>
       <th>Phone</th>
       <th>Email</th>
-      <th>Assignee</th>
+    
       <th>Category</th>
-      <th>Tags</th>
+    
       
 
     
@@ -17,15 +19,17 @@
   <tbody>
 <%= for account <- @accounts do %>
     <tr>
-      <td><%= account.name %></td>
-      <td><%= account.phone %></td>
+      <td><%= link account.name, to: Routes.account_path(@conn, :show, account), style: "color: #363636; "%></td>
+      <td><%= account.phone %> </td>
       <td><%= account.email %></td>
-      <td><%= account.assignee %></td>
+     
       <td><%= account.category %></td>
      
-      <td><%= account.tags %></td>
+ 
    
     </tr>
 <% end %>
   </tbody>
 </table>
+</div>
+</div>
