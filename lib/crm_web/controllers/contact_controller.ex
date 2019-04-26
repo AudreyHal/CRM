@@ -67,4 +67,20 @@ defmodule CrmWeb.ContactController do
     |> put_flash(:info, "Contact deleted successfully.")
     |> redirect(to: Routes.contact_path(conn, :index))
   end
+
+  def addnote(conn, %{"id" => id, "note" => note_params}) do
+    #id = Map.get(note_params, "account_id")
+    contact= CRM.get_contact!(id)
+    case CRM.create_contact_note(contact, note_params) do
+      {:ok, note} ->
+        conn
+        |> put_flash(:info, "Note created successfully.")
+        |> redirect(to: Routes.contact_path(conn, :show, contact))
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+
+
+        render(conn, "show.html", changeset: changeset, contact: contact)
+    end
+end
 end

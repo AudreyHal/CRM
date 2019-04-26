@@ -2,6 +2,7 @@ defmodule CrmWeb.PageController do
   use CrmWeb, :controller
 
   def index(conn, _params) do
-    render(conn, "index.html")
+ conn
+ |> redirect(to: Routes.account_path(conn, :index))
   end
 end
