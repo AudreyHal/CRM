@@ -37,4 +37,18 @@ defmodule CrmWeb.LeadController do
     changeset = Sales.change_lead(lead)
     render(conn, :show, lead: lead, changeset: changeset)
   end
+
+  def addnote(conn, %{"id" => id, "note" => note_params}) do
+    #id = Map.get(note_params, "account_id")
+    lead = CRM.get_lead!(id)
+    case CRM.create_lead_note(lead, note_params) do
+      {:ok, note} ->
+        conn
+        |> put_flash(:info, "Note created successfully.")
+        |> redirect(to: Routes.lead_path(conn, :show, lead))
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+        render(conn, "show.html", changeset: changeset, lead: lead)
+    end
+  end
 end

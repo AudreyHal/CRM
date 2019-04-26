@@ -77,11 +77,9 @@ defmodule CrmWeb.ContactController do
         conn
         |> put_flash(:info, "Note created successfully.")
         |> redirect(to: Routes.account_path(conn, :show, contact))
-
       {:error, %Ecto.Changeset{} = changeset} ->
-
-
         render(conn, "show.html", changeset: changeset, account: contact)
     end
   end
+
 end

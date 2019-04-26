@@ -41,7 +41,7 @@ thead {background: #1b5e86; color: whitesmoke}
 .show_label{font-weight:600}
 .field_title{font-size: 16px; font-weight: 600}
 .contact_section{margin-top:10px; border-bottom: 1px #dfe3e6 solid }
-#hidden2{display:none}
+
 .contact_section{  width:100%; background-color: transparent; border-top: 0px; border-left: 0px; border-right: 0px; text-align: left  }
 .contact_section:hover{  color: #1a81bf !important; font-weight: 600;  }
 
@@ -59,10 +59,20 @@ thead {background: #1b5e86; color: whitesmoke}
 .note_view{padding:9px 0px; margin:5px 0px;border-bottom: 0px solid rgb(214, 214, 214) }
 .time{color:rgb(165, 165, 165); font-size: 9px}
 .plus{height: 25px; color:#4a90e2; font-size: 10px}
-#hidden{display:none; margin-top:20px;  border-bottom: 1px solid rgb(214, 214, 214)}
+
 .note_title{border-bottom: 1px solid rgb(214, 214, 214, 0.4); margin-bottom: 1px; margin-top:5px}
 .clear{margin-bottom: 5px; }
 .show_notes{padding:5px 7px; background-color: #ffffff;   border: 1px solid rgba(223, 227, 230, 0.4);  height:auto; margin-bottom:50px }
 .acc_btn_4{color:white; width:130px; /*  margin-right: 0px; margin-left: 90px;  line-height: 20px; */margin:10px 0px; height:36px; background-color: #1a81bf; font-size:13px;  padding: 0px 12px; border:0;  font-weight: bold;}
 .related{ margin-top: 24px;}
 .sub_title{width:100%; background-color: #ffffff; margin-bottom: 0px;  padding:7px 8px; border:  1px solid rgb(222, 226, 230, 0.6)}
+
+/*--- Per Page  --->*/
+#hide_account_contact{display:none}
+#hide_opportunity_contact{display:none}
+#hide_lead_contact{display:none}
+#hide_contact_contact{display:none}
+#hidden_account_note{display:none; margin-top:20px;  border-bottom: 1px solid rgb(214, 214, 214)}
+#hidden_opportunity_note{display:none; margin-top:20px;  border-bottom: 1px solid rgb(214, 214, 214)}
+#hidden_lead_note{display:none; margin-top:20px;  border-bottom: 1px solid rgb(214, 214, 214)}
+#hidden_contact_note{display:none; margin-top:20px;  border-bottom: 1px solid rgb(214, 214, 214)}

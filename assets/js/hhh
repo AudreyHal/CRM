@@ -16,6 +16,75 @@ import "phoenix_html"
 // Local files can be imported directly using relative paths, for example:
 // import socket from "./socket"
 
+/*--- Accounts Page js --->*/
+  //  Hide/Show details for account page
+ document.getElementById("acc_account").onclick = function() {
+    var x = document.getElementById("hidden1_account_details");
+    if (x.style.display === "none") {x.style.display = "block";} else { x.style.display = "none";    } };
+
+  //  Hide/Show contact info for account page
+  document.getElementById("acc2_account").onclick = function() {
+    var x = document.getElementById("hide_account_contact");
+    if (x.style.display === "none") {x.style.display = "block";} else { x.style.display = "none";    } };
+
+  //  Hide/Show new note for account page
+  document.getElementById("b1_account").onclick = function() {
+    var x = document.getElementById("hidden_account_note");
+    if (x.style.display === "none") {x.style.display = "block";} else { x.style.display = "none";    } };
+
+
+
+/*--- Opportunity Page js --->*/
+  //  Hide/Show details for opportunity page
+ document.getElementById("acc_opportunity").onclick = function() {
+  var x = document.getElementById("hidden1_opportunity_details");
+  if (x.style.display === "none") {x.style.display = "block";} else { x.style.display = "none";    } };
+
+ //  Hide/Show contact info for opportunity page
+document.getElementById("acc2_opportunity").onclick = function() {
+  var x = document.getElementById("hide_opportunity_contact");
+  if (x.style.display === "none") {x.style.display = "block";} else { x.style.display = "none";    } };
+
+ //  Hide/Show new note for opportunity page
+document.getElementById("b1_opportunity").onclick = function() {
+  var x = document.getElementById("hidden_opportunity_note");
+  if (x.style.display === "none") {x.style.display = "block";} else { x.style.display = "none";    } };
+   
+
+  /*--- Contacts Page js --->*/
+  //  Hide/Show details for contact page
+ document.getElementById("acc_contact").onclick = function() {
+  var x = document.getElementById("hidden1_contact_details");
+  if (x.style.display === "none") {x.style.display = "block";} else { x.style.display = "none";    } };
+
+  //  Hide/Show contact info for contact page
+document.getElementById("acc2_contact").onclick = function() {
+  var x = document.getElementById("hide_contact_contact");
+  if (x.style.display === "none") {x.style.display = "block";} else { x.style.display = "none";    } };
+
+//  Hide/Show new note for contact page
+document.getElementById("b1_contact").onclick = function() {
+  var x = document.getElementById("hidden_contact_note");
+  if (x.style.display === "none") {x.style.display = "block";} else { x.style.display = "none";    } };
+
+
+  /*--- Leads Page js --->*/
+  //  Hide/Show details for lead page
+ document.getElementById("acc_lead").onclick = function() {
+    var x = document.getElementById("hidden1_lead_details");
+    if (x.style.display === "none") {x.style.display = "block";} else { x.style.display = "none";    } };
+
+  //  Hide/Show contact info for lead page
+  document.getElementById("acc2_lead").onclick = function() {
+    var x = document.getElementById("hide_lead_contact");
+    if (x.style.display === "none") {x.style.display = "block";} else { x.style.display = "none";    } };
+
+  //  Hide/Show new note for lead page
+  document.getElementById("b1_lead").onclick = function() {
+    var x = document.getElementById("hidden_lead_note");
+    if (x.style.display === "none") {x.style.display = "block";} else { x.style.display = "none";    } };
+
+
 
 /*--- Accordion --->*/
 var acc = document.getElementsByClassName("accordion1");
@@ -36,88 +105,3 @@ for (i = 0; i < acc.length; i++) {
     }
   });
 } 
-
-/*--- Accounts Page js --->*/
-  //  Hide/Show details for account page
- document.getElementById("acc_account").onclick = function() {
-    var x = document.getElementById("hidden1_account_details");
-if (x.style.display === "none") {x.style.display = "block";} 
-    else { x.style.display = "none";    } };
-
-  //  Hide/Show contact info for account page
-  document.getElementById("acc2_account").onclick = function() {
-    var x = document.getElementById("hide_account_contact");
-    if (x.style.display === "none") {x.style.display = "block";} 
-    else { x.style.display = "none";    } };
-
-  //  Hide/Show new note for account page
-  document.getElementById("b1_account").onclick = function() {
-    var x = document.getElementById("hidden_account_note");
-    if (x.style.display === "none") {x.style.display = "block";} 
-    else { x.style.display = "none";    } };
-
-
-
-/*--- Opportunity Page js --->*/
-  //  Hide/Show details for opportunity page
- document.getElementById("acc_opportunity").onclick = function() {
-  var x = document.getElementById("hidden1_opportunity_details");
-  if (x.style.display === "none") {x.style.display = "block";}
-   else { x.style.display = "none";    } };
-
- //  Hide/Show contact info for opportunity page
-document.getElementById("acc2_opportunity").onclick = function() {
-  var x = document.getElementById("hide_opportunity_contact");
-  if (x.style.display === "none") {x.style.display = "block";}
-   else { x.style.display = "none";    } };
-
- //  Hide/Show new note for opportunity page
-document.getElementById("b1_opportunity").onclick = function() {
-  var x = document.getElementById("hidden_opportunity_note");
-  if (x.style.display === "none") {x.style.display = "block";} 
-  else { x.style.display = "none";    } };
-   
-
-  /*--- Contacts Page js --->*/
-  //  Hide/Show details for contact page
- document.getElementById("acc_contact").onclick = function() {
-  var x = document.getElementById("hidden1_contact_details");
-  if (x.style.display === "none") {x.style.display = "block";}
-   else { x.style.display = "none";    } };
-
-  //  Hide/Show contact info for contact page
-document.getElementById("acc2_contact").onclick = function() {
-  var x = document.getElementById("hide_contact_contact");
-  if (x.style.display === "none") {x.style.display = "block";} 
-  else { x.style.display = "none";    } };
-
-//  Hide/Show new note for contact page
-document.getElementById("b1_contact").onclick = function() {
-  var x = document.getElementById("hidden_contact_note");
-  if (x.style.display === "none") {x.style.display = "block";} 
-  else { x.style.display = "none";    } };
-
-
-  /*--- Leads Page js --->*/
-  //  Hide/Show details for lead page
- document.getElementById("acc_lead").onclick = function() {
-    var x = document.getElementById("hidden1_lead_details");
-    if (x.style.display === "none") {x.style.display = "block";} 
-    else { x.style.display = "none";    } };
-
-  //  Hide/Show contact info for lead page
-  document.getElementById("acc2_lead").onclick = function() {
-    var x = document.getElementById("hide_lead_contact");
-    if (x.style.display === "none") {x.style.display = "block";} 
-    else { x.style.display = "none";    } };
-
-  //  Hide/Show new note for lead page
-  document.getElementById("b1_lead").onclick = function() {
-    var x = document.getElementById("hidden_lead_note");
-    if (x.style.display === "none") {x.style.display = "block";}
-     else { x.style.display = "none";    } };
-
-
-
-
-
