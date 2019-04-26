@@ -7,19 +7,19 @@
 body{color:#152935; background-color: #f5f4f4; font-size:13px; font-family: Arial, Helvetica, sans-serif }
 .body_container{padding:15px 30px }
 /*---Style navigation --->*/
-#top_nav{background-color:#152935 !important; width:100%; height:50px}
+#top_nav{background-color:#1b5e86 !important; width:100%; height:50px}
 .redd{color:red}
 #search {margin-left:30px !important; width:400px; font-size:13px; color:black; }
 #search_box{width:100%}
 #right_nav{color:white !important; padding-right:20px} 
 #second_nav{padding:5px 0px; background-color: white; height:50px}
 .second_nav_link{padding-left:30px; color:#152935 !important; font-size:16px; font-weight:600  }
-.btn{border-radius:0.1rem}
+.btn{border-radius:0.1rem; height: 1.6rem; padding:0.2rem 0.4rem ;}
 
 /*---Style index page--->*/
-.btn:hover{color: #1a81bf !important; font-weight: 500}
+.btn:hover{color: #1a81bf !important; font-weight: 600}
 .table{background-color: #ffffff}
-.acc_btn{background-color: #1a81bf;  font-size:13px; color:#ffffff !important; border-radius:0.1rem; border:0px; margin:15px 0px}
+.acc_btn{background-color: #1b5e86;  font-size:13px; color:#ffffff !important; border-radius:0.1rem; border:0px; margin:15px 0px}
 .fa-plus{padding-right:5px}
 
 /*---Style form --->*/
@@ -36,7 +36,7 @@ body{color:#152935; background-color: #f5f4f4; font-size:13px; font-family: Aria
 td {padding-top:5px !important; padding-bottom: 5px !important;}
 table {border: solid 1px #dfe3e6;}
 .table td,.table th {border-bottom: .05rem solid #dadee4; padding: .3rem .4rem !important;}
-thead {background: #1a81bf; color: whitesmoke}
+thead {background: #1b5e86; color: whitesmoke}
 .show_list_ul{list-style: none !important; background-color: #ffffff; margin:0px; padding:7px}
 .show_label{font-weight:600}
 .field_title{font-size: 16px; font-weight: 600}
