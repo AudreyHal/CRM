@@ -70,8 +70,8 @@ defmodule CrmWeb.ContactController do
 
   def addnote(conn, %{"id" => id, "note" => note_params}) do
     #id = Map.get(note_params, "account_id")
-    contact= CRM.get_contact!(id)
-    case CRM.create_contact_note(contact, note_params) do
+    contact= Sales.get_contact!(id)
+    case Sales.create_contact_note(contact, note_params) do
       {:ok, note} ->
         conn
         |> put_flash(:info, "Note created successfully.")

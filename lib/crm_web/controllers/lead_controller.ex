@@ -3,6 +3,7 @@ defmodule CrmWeb.LeadController do
 
   alias Crm.Sales
   alias Crm.Sales.Lead
+  alias Crm.Sales.Note
 
   def index(conn, _param) do
     leads = Sales.list_leads
@@ -40,8 +41,8 @@ defmodule CrmWeb.LeadController do
 
   def addnote(conn, %{"id" => id, "note" => note_params}) do
     #id = Map.get(note_params, "account_id")
-    lead = CRM.get_lead!(id)
-    case CRM.create_lead_note(lead, note_params) do
+    lead = Sales.get_lead!(id)
+    case Sales.create_lead_note(lead, note_params) do
       {:ok, note} ->
         conn
         |> put_flash(:info, "Note created successfully.")

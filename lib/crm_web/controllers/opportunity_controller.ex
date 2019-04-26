@@ -3,6 +3,7 @@ defmodule CrmWeb.OpportunityController do
 
   alias Crm.Sales
   alias Crm.Sales.Opportunity
+  alias Crm.Sales.Note
 
   def index(conn, _params) do
     opportunities = Sales.list_opportunities()

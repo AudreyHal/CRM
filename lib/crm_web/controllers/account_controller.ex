@@ -3,6 +3,7 @@ defmodule CrmWeb.AccountController do
 
   alias Crm.Sales
   alias Crm.Sales.Account
+  alias Crm.Sales.Note
 
   def index(conn, _params) do
     accounts = Sales.list_accounts()
