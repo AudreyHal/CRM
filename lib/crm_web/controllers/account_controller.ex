@@ -13,7 +13,8 @@ defmodule CrmWeb.AccountController do
   @spec new(Plug.Conn.t(), any()) :: Plug.Conn.t()
   def new(conn, _params) do
     changeset = Sales.change_account(%Account{})
-    render(conn, "new.html", changeset: changeset)
+    country = Sales.get_countries
+    render(conn, "new.html", changeset: changeset, country: country)
   end
 
   def create(conn, %{"account" => account_params}) do

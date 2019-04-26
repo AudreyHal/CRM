@@ -83,7 +83,8 @@
 <div class="column col-6">
    <div class="form-group">
   <%= label f, :country, class: "form-label1" %>
-  <%= text_input f, :country, class: "form-input" %>
+
+   <%= select f, :country, @country, class: "form-select" %>
   <%= error_tag f, :country %>
    </div> </div> </div>
 
