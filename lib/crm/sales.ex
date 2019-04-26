@@ -1,7 +1,7 @@
 defmodule Crm.Sales do
   import Ecto.Query, warn: false
   alias Crm.Repo
-  alias Crm.Sales.{Account, Lead, Opportunity}
+  alias Crm.Sales.{Account, Lead, Opportunity, Note}
 
   #---------------------------- Account--------------------------- #
 
@@ -82,7 +82,12 @@ defmodule Crm.Sales do
     Repo.all(Opportunity)
   end
 
-  def get_opportunity!(id), do: Repo.get!(Opportunity, id) |> Repo.preload(:notes)
+  def get_opportunity_account(opportunity) do
+    id = Map.get(opportunity, "account_id")
+    |> get_account!()
+  end
+
+  def get_opportunity!(id), do: Repo.get!(Opportunity, id) |> Repo.preload(:account) |> Repo.preload(:notes)
 
   def create_opportunity(%Account{} = account, attrs \\ %{}) do
     account
@@ -138,7 +143,7 @@ defmodule Crm.Sales do
       ** (Ecto.NoResultsError)
 
   """
-  def get_contact!(id), do: Repo.get!(Contact, id)|> Repo.preload(:accounts) |> Repo.preload(:notes)
+  def get_contact!(id), do: Repo.get!(Contact, id)|> Repo.preload(:account) |> Repo.preload(:notes)
 
   @doc """
   Creates a contact.
@@ -204,6 +209,13 @@ defmodule Crm.Sales do
   """
   def change_contact(%Contact{} = contact) do
     Contact.changeset(contact, %{})
+  end
+
+  def create_note_contact(%Contact{} = contact, attrs \\ %{}) do
+    contact
+    |> Ecto.build_assoc(:notes)
+    |> Note.changeset(attrs)
+    |> Repo.insert()
   end
 
 
@@ -331,11 +343,11 @@ defmodule Crm.Sales do
     |> Note.changeset(attrs)
    end
 
+
    def create_lead_note(%Lead{} = lead, attrs \\ %{}) do
     build_lead_note(lead, attrs)
     |> Repo.insert()
   end
-
 
   def build_lead_note(%Lead{} = lead, attrs \\ %{}) do
     Ecto.build_assoc(lead, :notes)

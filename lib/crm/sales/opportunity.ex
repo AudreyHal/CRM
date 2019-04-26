@@ -21,7 +21,7 @@ defmodule Crm.Sales.Opportunity do
   @doc false
   def changeset(opportunity, attrs) do
     opportunity
-    |> cast(attrs, [:name, :amount, :assigned_to, :close_date, :discount, :probability, :stage, :account_id])
-    |> validate_required([:name, :amount, :assigned_to, :close_date, :discount, :probability, :stage, :account_id])
+    |> cast(attrs, [:name, :amount, :assigned_to, :close_date, :discount, :probability, :stage])
+    |> validate_required([:name, :amount, :assigned_to, :close_date, :discount, :probability, :stage])
   end
 end

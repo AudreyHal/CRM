@@ -1,9 +1,9 @@
 <div class="content">
   <div class="columns">
-    <div class="column">
+    <div class="column col-12">
       <a class="btn acc_btn"   href="/contacts/new" ><i class="fas fa-plus">  </i> Create Contact </a>
     </div>
-    <div class="column col-12 col-mx-auto">
+    <div class="column col-9">
       <table class="table c2">
         <thead>
           <tr>
@@ -16,7 +16,7 @@
         <tbody>
       <%= for contact <- @contacts do %>
           <tr>
-            <td><%= link contact.first_name<>contact.last_name, to: Routes.contact_path(@conn, :show, contact) %></td>
+            <td><%= link contact.first_name<> " " <>contact.last_name, to: Routes.contact_path(@conn, :show, contact) %></td>
             <td><%= contact.email %></td>
             <td><%= contact.phone %></td>
             <td><%= contact.account.name %></td>

@@ -1,9 +1,9 @@
 <div class="content">
   <div class="columns">
-    <div class="column">
+    <div class="column col-12">
       <a class="btn acc_btn"   href="/opportunities/new" ><i class="fas fa-plus">  </i> Create opportunity </a>
     </div>
-    <div class="column col-12 col-mx-auto">
+    <div class="column col-9">
       <table class="table table-striped table-hover trans-table">
         <thead>
           <tr>
