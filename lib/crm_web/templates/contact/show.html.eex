@@ -1,1 +1,70 @@
-<%= @contact.first_name %>git 
+<div class="columns new_cl2">
+   <div class="column col-2 small_div">
+        <span class = "field_title" ><b> <%= @contact.first_name<> " " <>@contact.last_name %></b></span>
+        <ul class="show_list_ul">
+
+            <button class="contact_section" id="acc"> Contact Details</button>
+            <div id ="hidden1">
+
+            <li class="show_list">
+            <div class="show_label">Name:</div >
+            <%= @contact.title<> " " <>@contact.first_name<> " " <>@contact.last_name %>
+            </li>
+
+            <li class="show_list">
+            <div class="show_label">Email:</div >
+            <%= @contact.email %>
+            </li>
+
+            <li class="show_list">
+            <div class="show_label">Phone:</div >
+            <%= @contact.phone %>
+            </li>
+
+            <li class="show_list">
+            <div class="show_label">Department:</div >
+            <%= @contact.department %>
+            </li>
+
+            <li class="show_list">
+            <div class="show_label">Address:</div >
+            <%= @contact.street<> ", " <>@contact.city %>
+            </li>
+
+            <li class="show_list">
+            <div class="show_label">Country:</div >
+            <%= @contact.country %>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-4 column">
+        <div class="show_notes">
+        <div class="columns note_title">
+            <div class="column col-9"><p class="clear"><b>Notes</b></p></div>
+            <div class="column col-3"><a id="b1"  class="plus">New Note</a></div>
+        </div>
+        <div id="hidden" >
+            <%= render "form2.html", Map.put(assigns, :action, Routes.contact_path(@conn, :addnote, @contact)) %>
+        </div>
+
+        <%= for note <- @contact.notes do %>
+        <div class="note_view">
+
+        <%= note.description %>
+        <div class="time"><%= note.inserted_at %></div>
+
+        <% end %>
+        </div>
+    </div>
+
+    <div class="col-6 column">
+        <div class ="ac">
+        <div class=" sub_title"><b>Related</b></div>
+        <button class="accordion1 t1">Account </button>
+        <div class="panel">
+            
+            <p><%= FCMB %></p>
+            
+        </div>
+    </div>

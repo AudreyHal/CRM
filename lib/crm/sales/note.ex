@@ -1,10 +1,8 @@
 defmodule Crm.Sales.Note do
   use Ecto.Schema
   import Ecto.Changeset
-  alias Bill.CRM.Opportunity
-  alias Bill.CRM.Contact
-  alias Bill.CRM.Account
-  alias Bill.CRM.Note
+
+  alias Crm.Sales.{Account, Opportunity, Lead, Contact}
 
   schema "notes" do
     field :description, :string

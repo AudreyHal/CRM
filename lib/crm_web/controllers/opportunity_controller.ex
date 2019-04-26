@@ -3,6 +3,8 @@ defmodule CrmWeb.OpportunityController do
 
   alias Crm.Sales
   alias Crm.Sales.Opportunity
+  alias Crm.Sales.Account
+
 
   def index(conn, _params) do
     opportunities = Sales.list_opportunities()
@@ -33,8 +35,9 @@ defmodule CrmWeb.OpportunityController do
 
   def show(conn, %{"id" => id}) do
     opportunity = Sales.get_opportunity!(id)
+    account_changeset = Sales.change_account(%Account{})
     changeset = Sales.build_opportunity_note(opportunity)
-    render(conn, "show.html", opportunity: opportunity, changeset: changeset)
+    render(conn, "show.html", opportunity: opportunity, changeset: changeset, account_changeset: account_changeset)
   end
 
   def edit(conn, %{"id" => id}) do

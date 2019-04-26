@@ -15,7 +15,7 @@ defmodule Crm.Sales.Contact do
     field :phone, :string
     field :street, :string
     field :title, :string
-    belongs_to :accounts, Account, foreign_key: :account_id
+    belongs_to :account, Account
     has_many :notes, Note
 
     timestamps()

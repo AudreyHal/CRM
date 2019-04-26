@@ -36,7 +36,8 @@ defmodule CrmWeb.ContactController do
 
   def show(conn, %{"id" => id}) do
     contact = Sales.get_contact!(id)
-    render(conn, "show.html", contact: contact)
+    changeset = Sales.build_contact_note(contact)
+    render(conn, "show.html", contact: contact, changeset: changeset)
   end
 
   def edit(conn, %{"id" => id}) do
@@ -66,5 +67,21 @@ defmodule CrmWeb.ContactController do
     conn
     |> put_flash(:info, "Contact deleted successfully.")
     |> redirect(to: Routes.contact_path(conn, :index))
+  end
+
+  def addnote(conn, %{"id" => id, "note" => note_params}) do
+    #id = Map.get(note_params, "account_id")
+    contact = Sales.get_contact!(id)
+    case Sales.create_contact_note(contact, note_params) do
+      {:ok, _note} ->
+        conn
+        |> put_flash(:info, "Note created successfully.")
+        |> redirect(to: Routes.account_path(conn, :show, contact))
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+
+
+        render(conn, "show.html", changeset: changeset, account: contact)
+    end
   end
 end
